@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,21 +24,19 @@ use Illuminate\Support\Facades\Route;
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [ViewController::class, 'viewIndex'])->name('index');
 
-Route::get('/about-us', function () {
-    return view('about-us');
-});
+Route::get('/about-us', [ViewController::class, 'viewAboutUs'])->name('about-us');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/game-details/{id}', 'App\Http\Controllers\GameController@viewGameDetails');
-    Route::get('/cart', 'App\Http\Controllers\GameController@viewCart');
-    Route::get('/checkout', 'App\Http\Controllers\GameController@viewCheckout');
+    Route::get('/game-details/{id}', [ViewController::class, 'viewGameDetails'])->name('game-details');
+    Route::get('/cart', [ViewController::class, 'viewCart'])->name('cart');
+    Route::get('/checkout', [ViewController::class, 'viewCheckout'])->name('checkout');
 
-    Route::get('/account', 'App\Http\Controllers\UserController@viewAccount');
-    Route::get('/admin', 'App\Http\Controllers\UserController@viewAdmin');
+    Route::get('/account', [ViewController::class, 'viewAccount'])->name('account');
+    Route::get('/admin', [ViewController::class, 'viewAdmin'])->name('admin');
+
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
 require __DIR__ . '/auth.php';

@@ -10,6 +10,14 @@
 
 <body>
     <h1>Dashboard On Progress</h1>
+
+    <h2>Welcome, {{$name}}</h2>
+
+    {{-- temporary logout button --}}
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
 </body>
 
 </html>

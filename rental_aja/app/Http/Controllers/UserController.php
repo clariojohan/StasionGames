@@ -8,13 +8,5 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function viewAccount()
-    {
-        return view('account');
-    }
-
-    public function viewAdmin()
-    {
-        return view('admin');
-    }
+    
 }
