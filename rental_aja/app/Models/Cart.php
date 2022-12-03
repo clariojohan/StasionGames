@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GameImage extends Model
+class Cart extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = 'game_images';
 
-    public function game()
+    public function user()
     {
-        return $this->belongsTo(Game::class, 'game_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

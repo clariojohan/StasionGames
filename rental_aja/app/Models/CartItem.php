@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GameImage extends Model
+class CartItem extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = 'game_images';
+    protected $table = 'cart_items';
 
     public function game()
     {

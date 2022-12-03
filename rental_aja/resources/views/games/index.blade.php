@@ -32,6 +32,8 @@
         @foreach ($game->gameImages as $image)
             <img src="{{ asset('storage/' . $image->path) }}" alt="" style="width: 150px; height: 150px;">
         @endforeach
+        <br>
+        <a href="/games/{{ $game->id }}"><button>Details</button></a>
         <hr>
     @endforeach
 </body>

@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    @if ($errors->any())
+        {!! implode('', $errors->all('<div style="color: red;">:message</div>')) !!}
+    @endif
     <p>Title: {{ $game->title }}</p>
     <p>Release Date: {{ $game->release_date }}</p>
     <p>Description: {{ $game->description }}</p>
@@ -30,7 +33,27 @@
     @foreach ($game->gameImages as $image)
         <img src="{{ asset('storage/' . $image->path) }}" alt="" style="width: 150px; height: 150px;">
     @endforeach
-    <div class="">
+    <div class="" style="border: 1px solid black; width: 50%;">
+        <h2>Client Feature</h2>
+        <form method="POST" action="/carts" enctype="multipart/form-data">
+            @csrf
+            <input type="text" name='game_id' value="{{ $game->id }}" hidden>
+            <div class="" style="display: flex">
+                <label for="type">Release Date</label>
+                <select name="type" id="type">
+                    <option value="physical">Physical</option>
+                    <option value="digital">Digital</option>
+                </select>
+            </div>
+            <div class="" style="display: flex">
+                <label for="quantity">Quantity</label>
+                <input type="number" name="quantity">
+            </div>
+            <button>Add to cart</button>
+        </form>
+    </div>
+    <div class="" style="border: 1px solid black; width: 50%;">
+        <h2>Admin Feature</h2>
         <a href="/games/{{ $game->id }}/edit">
             <button>Update</button>
         </a>

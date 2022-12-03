@@ -5,14 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GameImage extends Model
+class Payment extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = 'game_images';
-
-    public function game()
-    {
-        return $this->belongsTo(Game::class, 'game_id');
-    }
 }

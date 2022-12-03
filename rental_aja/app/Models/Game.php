@@ -29,4 +29,9 @@ class Game extends Model
     {
         return $this->hasMany(GameImage::class, 'game_id');
     }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class, 'game_id');
+    }
 }
