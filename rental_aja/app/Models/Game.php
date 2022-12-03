@@ -20,6 +20,11 @@ class Game extends Model
         return $this->belongsToMany(Genre::class, 'game_genres', 'game_id', 'genre_id');
     }
 
+    public function platforms()
+    {
+        return $this->belongsToMany(Platform::class, 'game_platforms', 'game_id', 'platform_id');
+    }
+
     public function gameImages()
     {
         return $this->hasMany(GameImage::class, 'game_id');
