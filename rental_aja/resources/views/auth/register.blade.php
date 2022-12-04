@@ -12,8 +12,8 @@
             <!-- Name -->
             <div>
                 <x-input-label for="name" :value="__('Name')" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
-                    required autofocus />
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
+                    autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
@@ -74,4 +74,7 @@
             </div>
         </form>
     </x-auth-card>
+    <<<<<<< HEAD </x-guest-layout>
+        =======
 </x-guest-layout>
+>>>>>>> 40914b4ce7fbaf5e00c5d17994dbd9f83c6919a8
