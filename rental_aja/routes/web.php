@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/checkout', [ViewController::class, 'viewCheckout'])->name('checkout');
 
     Route::get('/account', [ViewController::class, 'viewAccount'])->name('account');
+    Route::patch('/account', [UserController::class, 'editAvatar'])->name('edit-avatar');
+
     Route::get('/admin', [ViewController::class, 'viewAdmin'])->name('admin');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 

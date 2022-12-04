@@ -57,7 +57,4 @@
             </div>
         </form>
     </x-auth-card>
-    <<<<<<< HEAD </x-guest-layout>
-        =======
 </x-guest-layout>
->>>>>>> 40914b4ce7fbaf5e00c5d17994dbd9f83c6919a8
