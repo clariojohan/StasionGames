@@ -26,7 +26,13 @@ class viewController extends Controller
 
     public function viewAccount()
     {
-        return view('account');
+        $user = User::find(auth()->user()->id);
+        $name = $user->name;
+        $email = $user->email;
+        $phone = $user->phone;
+        $address = $user->address;
+        $avatar = $user->avatar;
+        return view('account', compact('name', 'email', 'phone', 'address', 'avatar'));
     }
 
     public function viewGameDetails($id)
