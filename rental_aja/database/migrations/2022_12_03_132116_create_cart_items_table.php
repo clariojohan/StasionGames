@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('quantity');
             $table->enum('type', ['physical', 'digital']);
-            $table->foreignId('cart_id');
-            $table->foreignId('game_id');
+            $table->foreignId('cart_id')->constrained('carts');
+            $table->foreignId('game_id')->constrained('games');
             $table->timestamps();
         });
     }

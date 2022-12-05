@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('game_images', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->foreignId('game_id');
+            $table->foreignId('game_id')->constrained('games');
             $table->timestamps();
         });
     }
