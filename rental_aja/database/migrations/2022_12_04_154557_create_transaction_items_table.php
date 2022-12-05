@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('game_platforms', function (Blueprint $table) {
+        Schema::create('transaction_items', function (Blueprint $table) {
             $table->id();
+            $table->integer('quantity');
+            $table->enum('type', ['physical', 'digital']);
+            $table->foreignId('transaction_id')->constrained('transactions');
             $table->foreignId('game_id')->constrained('games');
-            $table->foreignId('platform_id')->constrained('platforms');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_platforms');
+        Schema::dropIfExists('transaction_items');
     }
 };

@@ -39,7 +39,7 @@
             @csrf
             <input type="text" name='game_id' value="{{ $game->id }}" hidden>
             <div class="" style="display: flex">
-                <label for="type">Release Date</label>
+                <label for="type">Type</label>
                 <select name="type" id="type">
                     <option value="physical">Physical</option>
                     <option value="digital">Digital</option>

@@ -25,7 +25,13 @@
         </div>
         <div class="" style="display: flex">
             <label for="rating">Rating</label>
-            <input type="text" name="rating">
+            <select name="rating" id="rating">
+                <option value="E">Everyone</option>
+                <option value="E10">Everyone 10+</option>
+                <option value="T">Teen</option>
+                <option value="M">Mature 17+</option>
+                <option value="A">Adult 18+</option>
+            </select>
         </div>
         <div class="" style="display: flex">
             <label for="price">Price</label>
