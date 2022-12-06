@@ -23,9 +23,9 @@ Route::get('/', [ViewController::class, 'viewIndex'])->name('index');
 Route::get('/about-us', [ViewController::class, 'viewAboutUs'])->name('about-us');
 
 Route::group(['middleware' => 'auth'], function () {
-    // Route::get('/game-details/{id}', [ViewController::class, 'viewGameDetails'])->name('game-details');
-    // Route::get('/cart', [ViewController::class, 'viewCart'])->name('cart');
-    // Route::get('/checkout', [ViewController::class, 'viewCheckout'])->name('checkout');
+    Route::get('/game-details/{id}', [ViewController::class, 'viewGameDetails'])->name('game-details');
+    Route::get('/cart', [ViewController::class, 'viewCart'])->name('cart');
+    Route::get('/checkout', [ViewController::class, 'viewCheckout'])->name('checkout');
 
     Route::get('/account', [ViewController::class, 'viewAccount'])->name('account');
     Route::patch('/account', [UserController::class, 'editAvatar'])->name('edit-avatar');

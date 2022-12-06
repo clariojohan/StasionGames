@@ -37,6 +37,7 @@ class viewController extends Controller
 
     public function viewGameDetails($id)
     {
+        
         return view('game-details');
     }
 
