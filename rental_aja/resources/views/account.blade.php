@@ -62,8 +62,8 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{{asset('storage/images/avatar/'.$avatar)}}" alt="avatar"
-                                class="rounded-circle img-fluid" style="width: 150px" />
+                            <img src="{{asset('storage/'.$avatar)}}" alt="avatar" class="rounded-circle img-fluid"
+                                style="width: 150px" />
                             {{-- form input avatar --}}
                             <form action="{{  route('edit-avatar') }}" method="POST" enctype="multipart/form-data"
                                 style="display: block">

@@ -5,37 +5,250 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="{{asset('css/account.css')}}" />
+    <title>Rental Aja - Dashboard</title>
 </head>
 
-<body>
-    @foreach ($games as $game)
-        {{-- <p>{{ $game }}</p> --}}
-        <p>Id: {{ $game->id }}</p>
-        <p>Title: {{ $game->title }}</p>
-        <p>Release Date: {{ $game->release_date }}</p>
-        <p>Description: {{ $game->description }}</p>
-        <p>Rating: {{ $game->rating }}</p>
-        <p>Price: {{ $game->price }}</p <p>Publisher: {{ $game->publisher->name }}</p>
-        <p>Genre:
-            @foreach ($game->genres as $genre)
-                {{ $genre->name }},
+<body class="d-flex flex-column bg-dark">
+    <!-- Navigation-->
+    <section style="background-color: rgb(66, 66, 66)">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img src="{{asset('images/logo.jpg')}}" alt=""
+                        style="width: 7.5em; border-radius: 0.5em" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/carts"><i
+                                    class="fa-solid fa-cart-shopping"></i></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/account"><i
+                                    class="fa-solid fa-user"></i></a>
+                        </li>
+                        @if (Auth::check())
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </button>
+                        </form>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/register">Register</a>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+
+    <!-- Banner -->
+    <div id="carouselExampleCaptions" class="carousel slide mt-5 pt-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://akcdn.detik.net.id/community/media/visual/2022/08/04/spanduk-hut-ri-ke-77.png?w=700&q=90"
+                    class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="https://akcdn.detik.net.id/community/media/visual/2022/08/04/spanduk-hut-ri-ke-77.png?w=700&q=90"
+                    class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="https://akcdn.detik.net.id/community/media/visual/2022/08/04/spanduk-hut-ri-ke-77.png?w=700&q=90"
+                    class="d-block w-100" alt="..." />
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="" style="margin: 0 2rem">
+        <p class="h4 text-white p-4">Featured Game</p>
+        <div class="card-group">
+            @foreach ($games as $game)
+            <div class="col mb-5 px-3">
+                <div class="card bg-dark border-secondary" style="width: 12rem">
+                    <a href="#">
+                        <img class="card-img-top" src="{{ asset('storage' . $game->gameImages->first()->path) }}"
+                            alt="" /></a>
+                    <div class="card-body px-4 py-2">
+                        <div class="text-center">
+                            <h5 class="fw-bolder text-white">{{ $game->title }}</h5>
+                            <p class="text-white-50">${{ $game->price }}</p>
+                            <div class="text-center">
+                                <a class="btn btn-outline-light mt-auto mb-2" href="/games/{{ $game->id }}">Show
+                                    Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @endforeach
-        </p>
-        <p>Platform:
-            @foreach ($game->platforms as $platform)
-                {{ $platform->name }},
-            @endforeach
-        </p>
-        {{-- <p>{{ $game->release_date }}</p> --}}
-        <p>Image:</p>
-        @foreach ($game->gameImages as $image)
-            <img src="{{ asset('storage/' . $image->path) }}" alt="" style="width: 150px; height: 150px;">
-        @endforeach
-        <br>
-        <a href="/games/{{ $game->id }}"><button>Details</button></a>
-        <hr>
-    @endforeach
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Our Game News</h4>
+                        <p>"Halo: Infinity" has published. Download now!</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post">
+                            <input type="email" name="email" />
+                            <input type="submit" value="Ask us!" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="/about-us">About us</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Services</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Terms of service</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Privacy policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Reverse Engineering</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Web Exploitation</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Digital Forensic</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Binary Exploitation</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Playstation 5 Hacking</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contact Us</h4>
+                        <p>
+                            Kemanggisan <br />
+                            Bekasi, JKT 809413 <br />
+                            Indonesia
+                            <br />
+                            <br />
+                            <strong>Phone: </strong> +62 812 9021 2212
+                            <br />
+                            <strong>Email: </strong> rental@aja.com
+                            <br />
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>About RentalAja</h3>
+                        <h7>We're giving you an easy service to be used to play games more lightly and more
+                            suitable with your passion.</h7>
+                        <div class="social-links mt-3">
+                            <a href="https://www.twitter.com/" class="twitter">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="https://www.facebook.com/" class="facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" class="instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/" class="linkedin">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright
+                <strong> <span>RentalAja </span> </strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by
+                <a href="/dashboard">RentalAja</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/1708e63c1c.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

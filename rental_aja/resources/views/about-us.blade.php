@@ -15,50 +15,52 @@
         <link rel="stylesheet" href="{{asset('css/account.css')}}" />
     </head>
     <body class="d-flex flex-column bg-dark">
-        <main class="flex-shrink-0 ">
             <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="{{asset('images/logo.jpg')}}" alt=""
-                        style="width: 7.5em; border-radius: 0.5em" /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarScroll">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/carts"><i
-                                    class="fa-solid fa-cart-shopping"></i></a>
-                        </li>
+            <section style="background-color: rgb(66, 66, 66)">
+                <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/"><img src="{{asset('images/logo.jpg')}}" alt=""
+                                style="width: 7.5em; border-radius: 0.5em" /></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarScroll">
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/carts"><i
+                                            class="fa-solid fa-cart-shopping"></i></a>
+                                </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/account"><i
-                                    class="fa-solid fa-user"></i></a>
-                        </li>
-                        @if (Auth::check())
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                            </button>
-                        </form>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/register">Register</a>
-                        </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/account"><i
+                                            class="fa-solid fa-user"></i></a>
+                                </li>
+                                @if (Auth::check())
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                    </button>
+                                </form>
+                                @else
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/register">Register</a>
+                                </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+
             <!-- Header-->
             <div class="py-5"></div>
             <header class="py-2">
