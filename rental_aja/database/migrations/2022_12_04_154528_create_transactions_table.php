@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['unpaid', 'paid']);
-            $table->string('address');
+            $table->string('address')->nullable();
+            $table->string('delivery')->nullable();
             $table->foreignId('payment_id')->nullable()->constrained('payments');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();

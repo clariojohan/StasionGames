@@ -48,6 +48,7 @@ class TransactionController extends Controller
         $transaction = Transaction::create([
             'status' => 'unpaid',
             'address' => $request->address,
+            'delivery' => $request->delivery,
             'user_id' => $user_id,
         ]);
 
