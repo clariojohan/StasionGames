@@ -187,7 +187,7 @@ class GameController extends Controller
         GamePlatform::where('game_id', $game->id)->delete();
 
         foreach ($images as $image) {
-            $filename = Storage::putFile('images', $image);
+            $filename = Storage::putFile('images/game-images', $image);
             GameImage::create([
                 'path' => $filename,
                 'game_id' => $game->id

@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+    <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-256/game-controller-458109.png">
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="{{asset('css/account.css')}}" />
-    <title>Rental Aja - Dashboard</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+    <title>StasionGames - The heaven of games</title>
 </head>
 
 <body class="d-flex flex-column bg-dark">
@@ -22,7 +23,7 @@
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="{{asset('images/logo.jpg')}}" alt=""
+                <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png" alt=""
                         style="width: 7.5em; border-radius: 0.5em" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +65,6 @@
         </nav>
     </section>
 
-
     <!-- Banner -->
     <div id="carouselExampleCaptions" class="carousel slide mt-5 pt-5" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -76,17 +76,17 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://akcdn.detik.net.id/community/media/visual/2022/08/04/spanduk-hut-ri-ke-77.png?w=700&q=90"
-                    class="d-block w-100" alt="..." />
+            <div class="carousel-item active mx-auto" style="width = 270px;">
+                <center><img src="https://cms2.gameflycdn.com/merchandising/live/Design/default/1920w/5036613.jpg"
+                        class="d-block w-95" height="480px" width="720px" /></center>
             </div>
             <div class="carousel-item">
-                <img src="https://akcdn.detik.net.id/community/media/visual/2022/08/04/spanduk-hut-ri-ke-77.png?w=700&q=90"
-                    class="d-block w-100" alt="..." />
+                <center><img src="https://cms2.gameflycdn.com/merchandising/live/Design/default/1920w/5036276.jpg"
+                        class="d-block w-95" height="480px" width="720px" /></center>
             </div>
             <div class="carousel-item">
-                <img src="https://akcdn.detik.net.id/community/media/visual/2022/08/04/spanduk-hut-ri-ke-77.png?w=700&q=90"
-                    class="d-block w-100" alt="..." />
+                <center><img src="https://images4.alphacoders.com/125/1255177.jpg" class="d-block w-95" height="480px"
+                        width="720px" /></center>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -108,7 +108,7 @@
             <div class="col mb-5 px-3">
                 <div class="card bg-dark border-secondary" style="width: 12rem">
                     <a href="#">
-                        <img class="card-img-top" src="{{ asset('storage' . $game->gameImages->first()->path) }}"
+                        <img class="card-img-top" src="{{ asset('storage/' . $game->gameImages->first()->path) }}"
                             alt="" /></a>
                     <div class="card-body px-4 py-2">
                         <div class="text-center">
@@ -207,12 +207,12 @@
                             <br />
                             <strong>Phone: </strong> +62 812 9021 2212
                             <br />
-                            <strong>Email: </strong> rental@aja.com
+                            <strong>Email: </strong> stasion@games.com
                             <br />
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>About RentalAja</h3>
+                        <h3>About StasionGames</h3>
                         <h7>We're giving you an easy service to be used to play games more lightly and more
                             suitable with your passion.</h7>
                         <div class="social-links mt-3">
@@ -236,11 +236,11 @@
         <div class="container">
             <div class="copyright">
                 &copy; Copyright
-                <strong> <span>RentalAja </span> </strong>. All Rights Reserved
+                <strong> <span>StasionGames </span> </strong>. All Rights Reserved
             </div>
             <div class="credits">
                 Designed by
-                <a href="/dashboard">RentalAja</a>
+                <a href="/dashboard">StasionGames</a>
             </div>
         </div>
     </footer>

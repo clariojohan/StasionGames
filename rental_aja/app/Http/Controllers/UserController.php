@@ -16,7 +16,7 @@ class UserController extends Controller
         ]);
 
         $file = $request->avatar;
-        
+
         // $file->move(public_path('storage/images/avatar/'), $imageName);
 
         // Storage::putFile will update the original file name to a random string, 

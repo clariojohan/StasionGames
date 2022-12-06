@@ -40,7 +40,7 @@ class GameSeeder extends Seeder
                 'title' => 'Dead Space',
                 'release_date' => '2022-01-27',
                 'description' => $gameDescription[1],
-                'rating' => 'RP',
+                'rating' => 'E10',
                 'price' => '69.99',
                 'publisher_id' => $publishersIDs->random()
             ],
@@ -56,7 +56,7 @@ class GameSeeder extends Seeder
                 'title' => 'Battlefield 2042',
                 'release_date' => '2021-11-19',
                 'description' => $gameDescription[3],
-                'rating' => 'M',
+                'rating' => 'A',
                 'price' => '4.99',
                 'publisher_id' => $publishersIDs->random()
             ]

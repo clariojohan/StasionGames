@@ -8,6 +8,7 @@ use App\Models\Transaction;
 use App\Models\TransactionItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Controllers\CartController;
 
 class TransactionController extends Controller
 {
@@ -18,6 +19,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        $user_id = auth()->user()->id;
+        $transactions = Transaction::where('user_id', $user_id)->get();
+
+        return view('transactions.index', ['transactions' => $transactions]);
     }
 
     /**
@@ -27,9 +32,25 @@ class TransactionController extends Controller
      */
     public function create(Request $request)
     {
-        $ids = $request->item_id;
-        $items = CartItem::find($ids);
-        return view('transactions.create', ['items' => $items]);
+        if ($request->action === 'delete') {
+            $cart_controller = new CartController;
+            $cart_controller->destroy($request->item_id);
+            return redirect('/carts');
+        } else {
+            $ids = $request->item_id;
+            if ($ids === null) {
+                return redirect('/carts');
+            }
+            $items = CartItem::find($ids);
+
+            $totalCart = 0;
+
+            foreach ($items as $item) {
+                $totalCart += $item->game->price * $item->quantity;
+            }
+
+            return view('transactions.create', ['items' => $items, 'totalCart' => $totalCart]);
+        }
     }
 
     /**
@@ -45,6 +66,7 @@ class TransactionController extends Controller
         $cartItems = CartItem::find($ids);
 
         $user_id = auth()->user()->id;
+
         $transaction = Transaction::create([
             'status' => 'unpaid',
             'address' => $request->address,
@@ -62,7 +84,26 @@ class TransactionController extends Controller
             ];
         }
         TransactionItem::insert($transactionItems);
-        return redirect()->route('transactions.show', $transaction->id);
+
+        $transaction_items = TransactionItem::where('transaction_id', $transaction->id)->get();
+
+        $totalCart = 0;
+
+        foreach ($transaction_items as $item) {
+            $totalCart += $item->game->price * $item->quantity;
+        }
+
+        $transaction->update([
+            'total_price' => $totalCart
+        ]);
+
+        $cartItems->each->delete();
+
+        if ($request->action === 'pay-now') {
+            return redirect()->route('transactions.show', $transaction->id);
+        } else if ($request->action === 'pay-later') {
+            return redirect()->route('transactions.index');
+        }
     }
 
     /**
@@ -74,7 +115,14 @@ class TransactionController extends Controller
     public function show($id)
     {
         $transaction = Transaction::find($id);
-        return view('transactions.show', ['transaction' => $transaction]);
+
+        $user = auth()->user();
+
+        if ($user->id !== $transaction->user_id) {
+            return view('andajelek');
+        }
+
+        return view('transactions.payment', ['transaction' => $transaction]);
     }
 
     /**
@@ -98,6 +146,7 @@ class TransactionController extends Controller
     public function update(Request $request, $id)
     {
         $transaction = Transaction::find($id);
+
         $payment = Payment::create([
             'type' => $request->payment_type,
             'invoice' => Str::uuid()->toString()
@@ -106,7 +155,7 @@ class TransactionController extends Controller
             'status' => 'paid',
             'payment_id' => $payment->id,
         ]);
-        return redirect()->route('transactions.show', $transaction->id);
+        return redirect()->route('transactions.index');
     }
 
     /**

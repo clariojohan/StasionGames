@@ -32,7 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin', [UserController::class, 'viewAdmin'])->name('admin');
 
-
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::resource('carts', CartController::class);

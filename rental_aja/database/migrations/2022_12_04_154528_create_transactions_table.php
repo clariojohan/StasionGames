@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['unpaid', 'paid']);
+            $table->double('total_price')->nullable();
             $table->string('address')->nullable();
             $table->string('delivery')->nullable();
             $table->foreignId('payment_id')->nullable()->constrained('payments');

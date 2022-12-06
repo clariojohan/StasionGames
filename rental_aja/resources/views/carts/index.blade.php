@@ -6,42 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="{{asset('css/account.css')}}" />
-    <title>Rental Aja - Cart</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+    <title>Carts - StasionGames</title>
 </head>
 
 <body class="d-flex flex-column bg-dark">
-
-    <form action="{{ route('transactions.create') }}" method="GET">
-        @foreach ($cart_items as $item)
-        <input type="checkbox" name="item_id[]" id="item_id" value="{{ $item->id }}">
-        <p>Id: {{ $item->id }}</p>
-        <p>Game Title: {{ $item->game->title }}</p>
-        <p>Game Price: {{ $item->game->price }}</p>
-        <p>Quantity: {{ $item->quantity }}</p>
-        <p>Total Price: {{ $item->game->price * $item->quantity }}</p>
-        <hr>
-        @endforeach
-        <button>Pay</button>
-    </form>
-
     <!-- Navigation-->
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="{{asset('images/logo.jpg')}}" alt=""
+                <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png" alt=""
                         style="width: 7.5em; border-radius: 0.5em" /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -80,29 +63,45 @@
 
     <!-- List Cart -->
     <ul class="card mt-5 p-5 list-group">
-        <li class="list-group-item">
-            <div class="w-100 d-flex flex-row align-items-center my-2 gap-3">
-                <input type="checkbox" class="form-check-input" id="product-check" />
-                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202208/1716/VcMfgNZfYBywOXvt8rIQUAFl.png"
-                    class="img-thumbnail" alt="..." width="200px" />
-                <div class="container d-flex flex-column gap-2">
-                    <h4 class="card-title">Sonic Frontiers</h4>
-                    <p class="card-subtitle text-muted">Type: Physical Edition</p>
-                    <p class="card-subtitle text-muted">Price: 69$</p>
-                    <p class="card-subtitle text-muted">Quantity: 2</p>
-                    <p class="card-subtitle text-muted">Total Price: 138$</p>
-                    <div class="container d-flex justify-content-end">
-                        <button class="btn btn-secondary me-md-2" type="button">
-                            Product Page
-                        </button>
-                        <button class="btn btn-danger me-md-2" type="button">
-                            Delete
-                        </button>
-                        <button class="btn btn-primary" type="button">Buy</button>
+        @if ($cart_items->count() < 1) <li class="list-group-item d-flex align-items-center justify-content-center"
+            style="height: 20em;">
+            <h1 class="text-center">Your Cart is Empty</h1>
+            </li>
+            @else
+            <form action="{{ route('transactions.create') }}" method="GET">
+                @foreach ($cart_items as $cart_item)
+                <li class="list-group-item">
+                    <div class="w-100 d-flex flex-row align-items-center my-2 gap-3">
+                        <input type="checkbox" class="form-check-input" name="item_id[]" id="item_id"
+                            value="{{ $cart_item->id }}">
+                        <img src="{{ asset('storage/' . $cart_item->game->gameImages->first()->path) }}"
+                            class="img-thumbnail" alt="" width="200px" />
+                        <div class="container d-flex flex-column gap-2">
+                            <h4 class="card-title">{{ $cart_item->game->title }}</h4>
+                            <p class="card-subtitle text-muted">Type: {{ $cart_item->type }} Edition</p>
+                            <p class="card-subtitle text-muted">Price: ${{ $cart_item->game->price }}</p>
+                            <p class="card-subtitle text-muted">Quantity: {{ $cart_item->quantity }}</p>
+                            <p class="card-subtitle text-muted">
+                                Total Price: ${{ $cart_item->game->price * $cart_item->quantity}}
+                            </p>
+                            <div class="container d-flex justify-content-end">
+                                <a href="{{ route('games.show', $cart_item->game->id) }}">
+                                    <button class="btn btn-secondary me-md-2" type="button">
+                                        Product Page
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
+                </li>
+
+                @endforeach
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end py-3 px-2">
+                    <button class="btn btn-primary" type="submit" name='action' value='delete'>Delete</button>
+                    <button class="btn btn-primary" type="submit" name='action' value='buy'>Buy</button>
                 </div>
-            </div>
-        </li>
+            </form>
+            @endif
     </ul>
 
     <!-- Footer -->
@@ -186,12 +185,12 @@
                             <br />
                             <strong>Phone: </strong> +62 812 9021 2212
                             <br />
-                            <strong>Email: </strong> rental@aja.com
+                            <strong>Email: </strong> stasion@games.com
                             <br />
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>About RentalAja</h3>
+                        <h3>About StasionGames</h3>
                         <h7>We're giving you an easy service to be used to play games more lightly and more
                             suitable with your passion.</h7>
                         <div class="social-links mt-3">
@@ -215,11 +214,11 @@
         <div class="container">
             <div class="copyright">
                 &copy; Copyright
-                <strong> <span>RentalAja </span> </strong>. All Rights Reserved
+                <strong> <span>StasionGames </span> </strong>. All Rights Reserved
             </div>
             <div class="credits">
                 Designed by
-                <a href="/dashboard">RentalAja</a>
+                <a href="/dashboard">StasionGames</a>
             </div>
         </div>
     </footer>

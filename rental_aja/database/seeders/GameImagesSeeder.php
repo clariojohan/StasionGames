@@ -19,43 +19,43 @@ class GameImagesSeeder extends Seeder
         DB::table('game_images')->insert([
             [
                 'game_id' => '1',
-                'path' => '/images/game-images/default-ps4.png'
+                'path' => 'images/game-images/default-ps4.png'
             ],
             [
                 'game_id' => '1',
-                'path' => '/images/game-images/default-ps5.png'
+                'path' => 'images/game-images/default-ps5.png'
             ],
             [
                 'game_id' => '1',
-                'path' => '/images/game-images/default-xbox.png'
+                'path' => 'images/game-images/default-xbox.png'
             ],
             [
                 'game_id' => '2',
-                'path' => '/images/game-images/default-ps4.png'
+                'path' => 'images/game-images/default-ps4.png'
             ],
             [
                 'game_id' => '2',
-                'path' => '/images/game-images/default-xbox.png'
+                'path' => 'images/game-images/default-xbox.png'
             ],
             [
                 'game_id' => '3',
-                'path' => '/images/game-images/default-ps4.png'
+                'path' => 'images/game-images/default-ps4.png'
             ],
             [
                 'game_id' => '3',
-                'path' => '/images/game-images/default-ps5.png'
+                'path' => 'images/game-images/default-ps5.png'
             ],
             [
                 'game_id' => '4',
-                'path' => '/images/game-images/default-ps4.png'
+                'path' => 'images/game-images/default-ps4.png'
             ],
             [
                 'game_id' => '4',
-                'path' => '/images/game-images/default-ps5.png'
+                'path' => 'images/game-images/default-ps5.png'
             ],
             [
                 'game_id' => '4',
-                'path' => '/images/game-images/default-xbox.png'
+                'path' => 'images/game-images/default-xbox.png'
             ]
         ]);
     }

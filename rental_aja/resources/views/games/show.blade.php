@@ -6,28 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>StasionGames - The heaven of games</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="{{asset('css/account.css')}}" />
+    <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-256/game-controller-458109.png">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
 </head>
 
 <body class="bg-dark">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="{{asset('images/logo.jpg')}}" alt=""
-                    style="width: 7.5em; border-radius: 0.5em" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png" alt=""
+                        style="width: 7.5em; border-radius: 0.5em" /></a>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -80,7 +77,7 @@
                             <div class="carousel-inner">
                                 @foreach ($game->gameImages as $index => $image)
                                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                    <img src="{{ asset('storage' . $image->path) }}" class="d-block w-50" alt="">
+                                    <img src="{{ asset('storage/' . $image->path) }}" class="d-block w-50" alt="">
                                 </div>
                                 @endforeach
                             </div>
@@ -111,37 +108,41 @@
                     <div class="fs-1 mb-5 text-white">
                         <span>${{ $game->price }}</span>
                     </div>
-                    <form method="POST" action="/carts" enctype="multipart/form-data">
+                    @if (Auth::check() && Auth::user()->role === 'user')
+                    <form method="POST" action="{{ route('carts.store') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="text" name='game_id' value="{{ $game->id }}" hidden>
                         <div class="" style="display: flex">
-                            <div class="mx-1">
-                                <input type="radio" class="btn-check" name="options" id="option1"
-                                    autocomplete="checked">
-                                <label class="btn btn-outline-light" for="option1">Physical</label>
+                            <select name="type" id="type"
+                                class="px-2 mb-2 w-auto h-auto justify-content-end align-items-center">
+                                <option value="Physical">Physical</option>
+                                <option value="Digital">Digital</option>
+                            </select>
+
+                            {{-- <div class="mx-1">
+                                <input type="radio" class="btn-check btn btn-outline-light" name="type" value="Physical"
+                                    id="option1" autocomplete="checked" placeholder="Physical">
+                                <!-- <label class="btn btn-outline-light" for="option1">Physical</label> -->
                             </div>
                             <div class="mx-1">
-                                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                                <label class="btn btn-outline-light" for="option2">Digital</label>
-                            </div>
-                            <div class="input-group w-50 justify-content-end align-items-center">
+                                <input type="radio" class="btn btn-outline-light" name="type" value="Digital"
+                                    id="option2" autocomplete="off" placeholder="Digital">
+                                <!-- <label class="btn btn-outline-light" for="option2">Digital</label> -->
+                            </div> --}}
+
+
+                            <div class="input-group w-50 justify-content-end align-items-center mb-2">
                                 <input type="number" placeholder="quantity" name="quantity"
-                                    class="quantity-field form-control input-number mx-1" value="1" min="1" max="10">
+                                    class="quantity-field form-control input-number mx-2" value="" min="1" max="10">
                             </div>
                         </div>
-                        <div class="d-flex my-2">
-                            <button class="btn btn-outline-light flex-shrink-0 w-100" type="button">
-                                <i class="fa-solid fa-cart-shopping me-1"></i>
-                                Add to cart
-                            </button>
-                        </div>
+                        <button class="btn btn-outline-light flex-shrink-0 w-100">
+                            <i class="fa-solid fa-cart-shopping me-1"></i>
+                            Add to cart
+                        </button>
                     </form>
+                    @endif
                     @if (Auth::check() && Auth::user()->role === 'admin')
-                    {{-- nuel tolong ini ntar pake icon2 ya buat create, delete, sm update icon dari fontawesome --}}
-                    {{-- nuel tolong ini ntar pake icon2 ya buat create, delete, sm update icon dari fontawesome --}}
-                    {{-- nuel tolong ini ntar pake icon2 ya buat create, delete, sm update icon dari fontawesome --}}
-                    {{-- nuel tolong ini ntar pake icon2 ya buat create, delete, sm update icon dari fontawesome --}}
-                    {{-- nuel tolong ini ntar pake icon2 ya buat create, delete, sm update icon dari fontawesome --}}
                     <h2 class="mt-5" style="color: white;">Admin Feature</h2>
                     <div class="w-auto" style="display: flex">
                         <a href="/games/create">
