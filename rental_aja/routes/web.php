@@ -6,6 +6,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::resource('carts', CartController::class);
+    Route::resource('transactions', TransactionController::class);
 });
 
 
