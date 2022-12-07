@@ -94,7 +94,7 @@
                         <h1 class="fw-bolder text-white">What we do</h1>
                         <p class="lead fw-normal text-white-50 mb-0 ">StasionGames puts video games where they belong—in
                             the
-                            hands of the gamers who love 'em. RentalAja also sells new consoles, controllers, games,
+                            hands of the gamers who love 'em. StasionGames also sells new consoles, controllers, games,
                             accessories and collectibles, as well as an extensive selection of gently used titles from
                             our
                             rental library, almost always complete with original case, artwork, codes and inserts. </p>
@@ -271,16 +271,16 @@
                                 suitable with your passion.</h7>
                             <div class="social-links mt-3">
                                 <a href="#" class="twitter">
-                                    <i class="bx bxl-twitter"></i>
+                                    <i class="fa-brands fa-twitter"></i>
                                 </a>
                                 <a href="#" class="facebook">
-                                    <i class="bx bxl-facebook"></i>
+                                    <i class="fa-brands fa-facebook"></i>
                                 </a>
                                 <a href="#" class="instagram">
-                                    <i class="bx bxl-instagram"></i>
+                                    <i class="fa-brands fa-instagram"></i>
                                 </a>
                                 <a href="#" class="linkedin">
-                                    <i class="bx bxl-linkedin"></i>
+                                    <i class="fa-brands fa-linkedin"></i>
                                 </a>
                             </div>
                         </div>

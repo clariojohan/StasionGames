@@ -107,22 +107,7 @@
 
     <!-- Footer -->
     <footer id="footer">
-        <div class="footer-newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h4>Our Game News</h4>
-                        <p>"Halo: Infinity" has published. Download now!</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <form action="" method="post">
-                            <input type="email" name="email" />
-                            <input type="submit" value="Ask us!" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -186,12 +171,12 @@
                             <br />
                             <strong>Phone: </strong> +62 812 9021 2212
                             <br />
-                            <strong>Email: </strong> rental@aja.com
+                            <strong>Email: </strong> stasion@games.com
                             <br />
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>About RentalAja</h3>
+                        <h3>About StasionGames</h3>
                         <h7>We're giving you an easy service to be used to play games more lightly and more
                             suitable with your passion.</h7>
                         <div class="social-links mt-3">
@@ -215,11 +200,11 @@
         <div class="container">
             <div class="copyright">
                 &copy; Copyright
-                <strong> <span>RentalAja </span> </strong>. All Rights Reserved
+                <strong> <span>StasionGames </span> </strong>. All Rights Reserved
             </div>
             <div class="credits">
                 Designed by
-                <a href="/dashboard">RentalAja</a>
+                <a href="/dashboard">StasionGames</a>
             </div>
         </div>
     </footer>
@@ -363,22 +348,7 @@
 
     <!-- Footer -->
     <footer id="footer">
-        <div class="footer-newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h4>Our Game News</h4>
-                        <p>"Halo: Infinity" has published. Download now!</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <form action="" method="post">
-                            <input type="email" name="email" />
-                            <input type="submit" value="Ask us!" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -442,12 +412,12 @@
                             <br />
                             <strong>Phone: </strong> +62 812 9021 2212
                             <br />
-                            <strong>Email: </strong> rental@aja.com
+                            <strong>Email: </strong> stastion@games.com
                             <br />
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>About RentalAja</h3>
+                        <h3>About StasionGames</h3>
                         <h7>We're giving you an easy service to be used to play games more lightly and more
                             suitable with your passion.</h7>
                         <div class="social-links mt-3">

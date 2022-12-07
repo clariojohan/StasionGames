@@ -63,7 +63,7 @@
     <div class="py-5"></div>
     <section class="py-2">
         <div class="container px-4 px-lg-5 my-5">
-            <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="row gx-4 gx-lg-5">
                 <div class="col-md-8">
                     <div class="container-lg my-3">
                         <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -74,10 +74,10 @@
                                 <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
                             </ol>
                             <!-- Wrapper for carousel items -->
-                            <div class="carousel-inner">
+                            <div class="carousel-inner border">
                                 @foreach ($game->gameImages as $index => $image)
                                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                    <img src="{{ asset('storage/' . $image->path) }}" class="d-block w-50" alt="">
+                                    <img src="{{ asset('storage/' . $image->path) }}" class="d-block w-100 h-auto border" alt="">
                                 </div>
                                 @endforeach
                             </div>
@@ -100,9 +100,9 @@
                     </div>
                     <h1 class="display-5 fw-bolder text-white">{{ $game->title }}</h1>
                     <div class="medium mb-1 text-white-50">Released {{ $game->release_date }}</div>
-                    <div class="small mb-5 text-white-50">
+                    <div class="small mb-5 text-white">
                         @foreach ($game->genres as $genre)
-                        <a href="">{{ $genre->name }}</a>
+                        {{ $genre->name . ' '}}
                         @endforeach
                     </div>
                     <div class="fs-1 mb-5 text-white">
@@ -187,111 +187,9 @@
             </div>
         </div>
     </section>
-    <section class="py-5 bg-dark">
-        <div class="container px-4 px-lg-5 mt-5">
-            <h2 class="fw-bolder mb-4 text-white">Related products</h2>
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div class="col mb-5">
-                    <div class="card h-100 bg-dark border-secondary">
-                        <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder text-white">Fancy Product</h5>
-                                <!-- Product price-->
-                                <p class="text-white-50">$40.00</p>
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-light mt-auto" href="#">View options</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-5">
-                    <div class="card h-100 bg-dark border-secondary">
-                        <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder text-white">Fancy Product</h5>
-                                <!-- Product price-->
-                                <p class="text-white-50">$40.00</p>
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-light mt-auto" href="#">View options</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-5">
-                    <div class="card h-100 bg-dark border-secondary">
-                        <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder text-white">Fancy Product</h5>
-                                <!-- Product price-->
-                                <p class="text-white-50">$40.00</p>
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-light mt-auto" href="#">View options</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-5">
-                    <div class="card h-100 bg-dark border-secondary">
-                        <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder text-white">Fancy Product</h5>
-                                <!-- Product price-->
-                                <p class="text-white-50">$40.00</p>
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-light mt-auto" href="#">View options</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Footer-->
     <footer id="footer">
-        <div class="footer-newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h4>Our Game News</h4>
-                        <p>"Halo: Infinity" has published. Download now!</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <form action="" method="post">
-                            <input type="email" name="email" />
-                            <input type="submit" value="Ask us!" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -355,26 +253,26 @@
                             <br />
                             <strong>Phone: </strong> +62 812 9021 2212
                             <br />
-                            <strong>Email: </strong> rental@aja.com
+                            <strong>Email: </strong> stasion@games.com
                             <br />
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>About RentalAja</h3>
+                        <h3>About StasionGames</h3>
                         <h7>We're giving you an easy service to be used to play games more lightly and more
                             suitable with your passion.</h7>
                         <div class="social-links mt-3">
                             <a href="#" class="twitter">
-                                <i class="bx bxl-twitter"></i>
+                                <i class="fa-brands fa-twitter"></i>
                             </a>
                             <a href="#" class="facebook">
-                                <i class="bx bxl-facebook"></i>
+                                <i class="fa-brands fa-facebook"></i>
                             </a>
                             <a href="#" class="instagram">
-                                <i class="bx bxl-instagram"></i>
+                                <i class="fa-brands fa-instagram"></i>
                             </a>
                             <a href="#" class="linkedin">
-                                <i class="bx bxl-linkedin"></i>
+                                <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </div>
                     </div>
@@ -384,11 +282,11 @@
         <div class="container">
             <div class="copyright">
                 &copy; Copyright
-                <strong> <span>RentalAja </span> </strong>. All Rights Reserved
+                <strong> <span>StasionGames </span> </strong>. All Rights Reserved
             </div>
             <div class="credits">
                 Designed by
-                <a href="/dashboard">RentalAja</a>
+                <a href="/dashboard">StasionGames</a>
             </div>
         </div>
     </footer>

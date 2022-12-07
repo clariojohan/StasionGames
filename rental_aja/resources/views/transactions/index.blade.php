@@ -81,22 +81,7 @@
 
     <!-- Footer-->
     <footer id="footer">
-        <div class="footer-newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h4>Our Game News</h4>
-                        <p>"Halo: Infinity" has published. Download now!</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <form action="" method="post">
-                            <input type="email" name="email" />
-                            <input type="submit" value="Ask us!" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="footer-top">
             <div class="container">
                 <div class="row">
