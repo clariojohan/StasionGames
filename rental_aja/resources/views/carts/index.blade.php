@@ -23,13 +23,12 @@
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png" alt=""
-                        style="width: 7.5em; border-radius: 0.5em" /></a>
-                <div class="collapse navbar-collapse" id="navbarScroll">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                <a class="navbar-brand" href="/"><img
+                        src="{{url('/images/logo.png')}}"
+                        alt="" style="width: 7.5em; border-radius: 0.5em" /></a>
+            </div>
+            <div class="d-flex justify-content-end">
+            <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/carts"><i
@@ -37,22 +36,22 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/account"><i
-                                    class="fa-solid fa-user"></i></a>
+                            <a class="nav-link active px-2" aria-current="page" href="/account"><i
+                                    class="fa-solid fa-user px-2"></i></a>
                         </li>
                         @if (Auth::check())
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fa-solid fa-right-from-bracket"></i>
+                            <button type="submit" class="btn btn-danger px-2">
+                                <i class="fa-solid fa-right-from-bracket px-2"></i>
                             </button>
                         </form>
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/login">Login</a>
+                            <a class="nav-link px-2" aria-current="page" href="/login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/register">Register</a>
+                            <a class="nav-link px-2" aria-current="page" href="/register">Register</a>
                         </li>
                         @endif
                     </ul>
@@ -86,7 +85,7 @@
                             </p>
                             <div class="container d-flex justify-content-end">
                                 <a href="{{ route('games.show', $cart_item->game->id) }}">
-                                    <button class="btn btn-secondary me-md-2" type="button">
+                                    <button class="btn btn-outline-info me-md-2" type="button">
                                         Product Page
                                     </button>
                                 </a>
@@ -97,7 +96,7 @@
 
                 @endforeach
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end py-3 px-2">
-                    <button class="btn btn-primary" type="submit" name='action' value='delete'>Delete</button>
+                    <button class="btn btn-outline-danger" type="submit" name='action' value='delete'>Delete</button>
                     <button class="btn btn-primary" type="submit" name='action' value='buy'>Buy</button>
                 </div>
             </form>
