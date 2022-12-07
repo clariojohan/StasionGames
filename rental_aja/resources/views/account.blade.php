@@ -5,11 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-256/game-controller-458109.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" rel="stylesheet" />
-    <link rel="stylesheet" href="{{asset('css/account.css')}}" />
-    <title>Rental Aja - Account</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+    <title>Account - StasionGames</title>
 
 </head>
 
@@ -17,12 +18,8 @@
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="{{asset('images/logo.jpg')}}" alt=""
+                <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png" alt=""
                         style="width: 7.5em; border-radius: 0.5em" /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -62,11 +59,11 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{{asset('storage/images/avatar/'.$avatar)}}" alt="avatar"
-                                class="rounded-circle img-fluid" style="width: 150px" />
+                            <img src="{{asset('storage/'.$avatar)}}" alt="avatar" class="rounded-circle img-fluid"
+                                style="width: 150px" />
                             {{-- form input avatar --}}
                             <form action="{{  route('edit-avatar') }}" method="POST" enctype="multipart/form-data"
-                                style="display: block">
+                                style="">
                                 @csrf @method('patch')
                                 <input type="file" name="avatar" id="avatar">
                                 <input type="submit" value="Upload">
@@ -228,26 +225,26 @@
                             <br />
                             <strong>Phone: </strong> +62 812 9021 2212
                             <br />
-                            <strong>Email: </strong> rental@aja.com
+                            <strong>Email: </strong> stasion@games.com
                             <br />
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>About RentalAja</h3>
+                        <h3>About StasionGames</h3>
                         <h7>We're giving you an easy service to be used to play games more lightly and more
                             suitable with your passion.</h7>
                         <div class="social-links mt-3">
                             <a href="#" class="twitter">
-                                <i class="bx bxl-twitter"></i>
+                                <i class="fa-brands fa-twitter"></i>
                             </a>
                             <a href="#" class="facebook">
-                                <i class="bx bxl-facebook"></i>
+                                <i class="fa-brands fa-facebook"></i>
                             </a>
                             <a href="#" class="instagram">
-                                <i class="bx bxl-instagram"></i>
+                                <i class="fa-brands fa-instagram"></i>
                             </a>
                             <a href="#" class="linkedin">
-                                <i class="bx bxl-linkedin"></i>
+                                <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </div>
                     </div>
@@ -257,11 +254,11 @@
         <div class="container">
             <div class="copyright">
                 &copy; Copyright
-                <strong> <span>RentalAja </span> </strong>. All Rights Reserved
+                <strong> <span>StasionGames </span> </strong>. All Rights Reserved
             </div>
             <div class="credits">
                 Designed by
-                <a href="/dashboard">RentalAja</a>
+                <a href="/dashboard">StasionGames</a>
             </div>
         </div>
     </footer>

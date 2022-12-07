@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
+
+    // ========================================= USER =========================================
+    // ------------------------------ SHOW ALL GAMES (DASHBOARD) ------------------------------
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +25,33 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::with(['publisher', 'genres', 'gameImages', 'platforms'])->get();
+        // get all
+        // $games = Game::with(['publisher', 'genres', 'gameImages', 'platforms'])->get();
+
+        $games = Game::with(['gameImages'])->get(['id', 'title', 'price']);
+
         return view('games.index', ['games' => $games]);
+
+        // ini masih bisa nembak buat ambil data - data yang seharusnya ga boleh didump spt publisher_id
     }
+
+    // ------------------------------ SHOW SPECIFIC GAME DETAIL ------------------------------
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $game = Game::find($id)->load(['publisher', 'genres', 'gameImages', 'platforms']);
+        return view('games.show', ['game' => $game]);
+    }
+
+
+
+    // ========================================= ADMIN =========================================
+    // --------------------------------- SHOW ADD GAME PAGE  -----------------------------------
 
     /**
      * Show the form for creating a new resource.
@@ -33,6 +60,10 @@ class GameController extends Controller
      */
     public function create()
     {
+        if (!auth()->user() || auth()->user()->role !== 'admin') {
+            return abort(403);
+        }
+
         $publishers = Publisher::all();
         $genres = Genre::all();
         $platforms = Platform::all();
@@ -43,6 +74,8 @@ class GameController extends Controller
         ]);
     }
 
+
+    // --------------------------------- POST REQUEST ADD GAME  -----------------------------------
     /**
      * Store a newly created resource in storage.
      *
@@ -51,6 +84,22 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+        if (!auth()->user() || auth()->user()->role !== 'admin') {
+            return abort(403);
+        }
+
+        // $request->validate([
+        //     'title' => 'required',
+        //     'release_date' => 'required',
+        //     'description' => 'required',
+        //     'rating' => 'required',
+        //     'price' => 'required',
+        //     'publisher_id' => 'required',
+        //     'genre_id' => 'required',
+        //     'platform_id' => 'required',
+        //     'images' => 'required'
+        // ]);
+
         $data = $request->except(['genre_id', 'platform_id', 'images']);
         $genres = $request->genre_id;
         $platforms = $request->platform_id;
@@ -73,7 +122,7 @@ class GameController extends Controller
         }
 
         foreach ($images as $image) {
-            $filename = Storage::putFile('images', $image);
+            $filename = Storage::putFile('images/game-images', $image);
             GameImage::create([
                 'path' => $filename,
                 'game_id' => $game->id
@@ -83,18 +132,8 @@ class GameController extends Controller
         return redirect('/games');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $game = Game::find($id)->load(['publisher', 'genres', 'gameImages', 'platforms']);
-        return view('games.show', ['game' => $game]);
-    }
 
+    // --------------------------------- SHOW EDIT GAME PAGE -----------------------------------
     /**
      * Show the form for editing the specified resource.
      *
@@ -103,6 +142,10 @@ class GameController extends Controller
      */
     public function edit($id)
     {
+        if (!auth()->user() || auth()->user()->role !== 'admin') {
+            return abort(403);
+        }
+
         $publishers = Publisher::all();
         $genres = Genre::all();
         $platforms = Platform::all();
@@ -115,6 +158,8 @@ class GameController extends Controller
         ]);
     }
 
+
+    // --------------------------------- POST REQUEST EDIT GAME  -----------------------------------
     /**
      * Update the specified resource in storage.
      *
@@ -124,8 +169,10 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        // $game = Game::find($id)->load(['publisher', 'genres', 'gameImages', 'platforms']);
-        // dd($game);
+        if (!auth()->user() || auth()->user()->role !== 'admin') {
+            return abort(403);
+        }
+
         $data = $request->except(['genre_id', 'platform_id', 'images']);
         $genres = $request->genre_id;
         $platforms = $request->platform_id;
@@ -140,7 +187,7 @@ class GameController extends Controller
         GamePlatform::where('game_id', $game->id)->delete();
 
         foreach ($images as $image) {
-            $filename = Storage::putFile('images', $image);
+            $filename = Storage::putFile('images/game-images', $image);
             GameImage::create([
                 'path' => $filename,
                 'game_id' => $game->id
@@ -166,6 +213,7 @@ class GameController extends Controller
         return redirect('/games/' . $game->id);
     }
 
+    // --------------------------------- DELETE METHOD REQUEST DELETE GAME  -----------------------------------
     /**
      * Remove the specified resource from storage.
      *
@@ -174,6 +222,10 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
+        if (!auth()->user() || auth()->user()->role !== 'admin') {
+            return abort(403);
+        }
+
         foreach ($game->gameImages as $image) {
             Storage::delete($image->path);
         }

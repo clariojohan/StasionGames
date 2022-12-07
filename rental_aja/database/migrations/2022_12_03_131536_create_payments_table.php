@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->enum('type', ['Bank', 'E-Money']);
             $table->string('invoice');
             $table->timestamps();
         });

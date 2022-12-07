@@ -6,6 +6,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,24 +19,24 @@ use App\Http\Controllers\CartController;
 |
 */
 
-Route::get('/', [ViewController::class, 'viewIndex'])->name('index');
+Route::resource('games', GameController::class);
+
+Route::get('/', [GameController::class, 'index'])->name('index');
 
 Route::get('/about-us', [ViewController::class, 'viewAboutUs'])->name('about-us');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/game-details/{id}', [ViewController::class, 'viewGameDetails'])->name('game-details');
-    Route::get('/cart', [ViewController::class, 'viewCart'])->name('cart');
-    Route::get('/checkout', [ViewController::class, 'viewCheckout'])->name('checkout');
 
-    Route::get('/account', [ViewController::class, 'viewAccount'])->name('account');
+    Route::get('/account', [UserController::class, 'viewAccount'])->name('account');
     Route::patch('/account', [UserController::class, 'editAvatar'])->name('edit-avatar');
 
-    Route::get('/admin', [ViewController::class, 'viewAdmin'])->name('admin');
+    Route::get('/admin', [UserController::class, 'viewAdmin'])->name('admin');
+
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::resource('carts', CartController::class);
+    Route::resource('transactions', TransactionController::class);
 });
 
-Route::resource('games', GameController::class);
 
 require __DIR__ . '/auth.php';

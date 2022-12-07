@@ -94,8 +94,17 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ids)
     {
-        //
+        if (!auth()->user()) {
+            return abort(403);
+        }
+
+        foreach ($ids as $key => $id) {
+            $cart_item = CartItem::find($id);
+            $cart_item->delete();
+        }
+
+        return redirect('/carts');
     }
 }

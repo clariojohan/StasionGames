@@ -24,16 +24,6 @@ class viewController extends Controller
         return view('about-us');
     }
 
-    public function viewAccount()
-    {
-        $user = User::find(auth()->user()->id);
-        $name = $user->name;
-        $email = $user->email;
-        $phone = $user->phone;
-        $address = $user->address;
-        $avatar = $user->avatar;
-        return view('account', compact('name', 'email', 'phone', 'address', 'avatar'));
-    }
 
     public function viewGameDetails($id)
     {
@@ -47,10 +37,8 @@ class viewController extends Controller
 
         $publisher = DB::table('publishers')->where('id', $game->publisher_id)->first();
         $publisher_name = $publisher->name;
-        
-        // $game_genres = DB::table('game_genres')->where('game_id', $id)->all();
-        $game_genres = DB::table('game_genres')->where('game_id', $id)->all();
-        return view('game-details', compact('title', 'release_date', 'description', 'rating', 'price', 'publisher_name', 'game_genres'));
+
+        return view('game-details', compact('title', 'release_date', 'description', 'rating', 'price', 'publisher_name'));
     }
 
     public function viewCart()
@@ -63,11 +51,4 @@ class viewController extends Controller
         return view('checkout');
     }
 
-    public function viewAdmin()
-    {
-        if (auth()->user()->role == 'admin') {
-            return view('admin');
-        } else
-            abort(403);
-    }
 }
