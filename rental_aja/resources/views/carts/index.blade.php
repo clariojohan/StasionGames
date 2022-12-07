@@ -22,17 +22,23 @@
     <!-- Navigation-->
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
-            <div class="container-fluid">
+            <div class="container-fluid ms-3">
                 <a class="navbar-brand" href="/"><img
                         src="{{url('/images/logo.png')}}"
                         alt="" style="width: 7.5em; border-radius: 0.5em" /></a>
             </div>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end me-3">
             <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                    
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/carts"><i
-                                    class="fa-solid fa-cart-shopping"></i></a>
+                            <a class="nav-link px-2" aria-current="page" href="/carts"><i
+                                    class="fa-solid fa-cart-shopping px-2"></i></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link px-2" aria-current="page" href="/transactions"><i 
+                                    class="fas fa-receipt px-2"></i></a>
                         </li>
 
                         <li class="nav-item">
