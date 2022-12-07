@@ -98,11 +98,18 @@
                     </div>
                     <div class="col-md-4">
                         <div class="small mb-1 text-white-50">XBOX ONE</div>
-                        <h1 class="display-5 fw-bolder text-white">Cuphead</h1>
-                        <div class="medium mb-1 text-white-50">Released 11/9/2021</div>
-                        <div class="small mb-5 text-white-50">Genre <a href="/">Racing</a></div>
+                        <h1 class="display-5 fw-bolder text-white">{{$title}}</h1>
+                        <div class="medium mb-1 text-white-50">Released {{$release_date}}</div>
+                        <div class="small mb-5 text-white-50">Genre
+                            @foreach({{genre in game_genres}}){
+                                <a href="">
+                                    {{$genre}}
+                                </a>
+                            }
+                            @endforeach
+                        </div>
                         <div class="fs-1 mb-5 text-white">
-                            <span>$50.00</span>
+                            <span>${{$price}}</span>
                         </div>
                         <div class="d-flex">
                             <button class="btn btn-outline-light flex-shrink-0 w-100" type="button">
@@ -118,9 +125,7 @@
             <div class="container px-4 px-lg-5 my-2">
                 <div class="col mb-1">
                     <h3 class="fw-bolder mb-4 text-white">Come one, come all, to witness an interactive entertainment spectacle for the ages!</h3>
-                    <p class="medium mb-4 text-white-50">Presenting… the all-cartoon Wondergame Cuphead!! In this classic run and gun action game, play as brothers Cuphead or Mugman (in single player or local co-op) as you traverse strange worlds and take on massive, screen-filling bosses to earn your souls back from The Devil himself!</p>
-                    <p class="medium mb-4 text-white-50">It's no exaggeration to say there really isn't any other experience like this worldwide phenomenon from developer Studio MDHR. Inspired by cartoons of the 1930s, Cuphead's visuals and audio are meticulously created with the same techniques of the era: traditional hand drawn cel animation, watercolor backgrounds, and original jazz recordings. Cuphead truly is a playable cartoon that feels plucked from the golden era of animation.</p>
-                    <p class="medium mb-4 text-white-50">But that's not all! This raucous retail edition includes the incredibly popular DLC expansion "The Delicious Last Course" on-disc/cartridge, offering players a bevy of additional bosses, wondrous weapons & charms, and all-new playable character Ms. Chalice. Add in a set of delightful pack-ins lovingly crafted by the artists at Studio MDHR, and you get quite simply the most complete Cuphead experience ever, perfect for long-time fans and newcomers alike!</p>
+                    <p class="medium mb-4 text-white-50">{{$description}}</p>
                 </div>
             </div>
         </section>
@@ -134,8 +139,8 @@
                         <p class="medium mb-4 fw-bold text-white">Rating</p>
                     </div>
                     <div class="col-md-6 mb-1">
-                        <p class="medium mb-4 text-white-50">Skybound Games</p>
-                        <p class="medium mb-4 text-white-50">Everyone 10+</p>
+                        <p class="medium mb-4 text-white-50">{{$publisher_name}}</p>
+                        <p class="medium mb-4 text-white-50">{{$rating}}</p>
                     </div>
                 </div>
             </div>

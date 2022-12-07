@@ -12,7 +12,9 @@
     @if ($errors->any())
         {!! implode('', $errors->all('<div style="color: red;">:message</div>')) !!}
     @endif
-    <p>Title: {{ $game->title }}</p>
+    <p>Title: 
+        
+    </p>
     <p>Release Date: {{ $game->release_date }}</p>
     <p>Description: {{ $game->description }}</p>
     <p>Rating: {{ $game->rating }}</p>
