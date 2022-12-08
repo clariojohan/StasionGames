@@ -76,6 +76,15 @@
                 </li>
                 @endforeach
                 <li class="list-group-item py-3">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <p class="card-subtitle">Transaction ID: {{ $transaction->id }}</p>
                     @if ($transaction->status === 'paid')
                     <p class="card-subtitle">Invoice: {{$transaction->payment->invoice}}</p>

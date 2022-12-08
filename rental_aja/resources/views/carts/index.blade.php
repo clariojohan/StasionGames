@@ -19,12 +19,24 @@
 </head>
 
 <body class="d-flex flex-column bg-dark">
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <!-- Navigation-->
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png" alt=""
-                        style="width: 7.5em; border-radius: 0.5em" /></a>
+                <a class="navbar-brand" href="/"><img
+                        src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png"
+                        alt="" style="width: 7.5em; border-radius: 0.5em" /></a>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

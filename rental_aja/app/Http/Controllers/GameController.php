@@ -12,6 +12,7 @@ use App\Models\GamePlatform;
 use App\Models\Platform;
 use App\Models\GameImage;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class GameController extends Controller
 {
@@ -88,17 +89,18 @@ class GameController extends Controller
             return abort(403);
         }
 
-        // $request->validate([
-        //     'title' => 'required',
-        //     'release_date' => 'required',
-        //     'description' => 'required',
-        //     'rating' => 'required',
-        //     'price' => 'required',
-        //     'publisher_id' => 'required',
-        //     'genre_id' => 'required',
-        //     'platform_id' => 'required',
-        //     'images' => 'required'
-        // ]);
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'release_date' => 'required|date',
+            'description' => 'required|string|max:4096',
+            'rating' => 'required|string|in:E,E10,T,M,A',
+            'price' => 'required|numeric|between:0,9999.99',
+            'publisher_id' => 'required|integer|exists:publishers,id',
+            'genre_id' => 'required|array|min:1|exists:genres,id',
+            'platform_id' => 'required|array|min:1|exists:platforms,id',
+            'images' => 'required|array|min:1|max:5',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
         $data = $request->except(['genre_id', 'platform_id', 'images']);
         $genres = $request->genre_id;
@@ -172,6 +174,19 @@ class GameController extends Controller
         if (!auth()->user() || auth()->user()->role !== 'admin') {
             return abort(403);
         }
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'release_date' => 'required|date',
+            'description' => 'required|string|max:4096',
+            'rating' => 'required|string|in:E,E10,T,M,A',
+            'price' => 'required|numeric|between:0,9999.99',
+            'publisher_id' => 'required|integer|exists:publishers,id',
+            'genre_id' => 'required|array|min:1|exists:genres,id',
+            'platform_id' => 'required|array|min:1|exists:platforms,id',
+            'images' => 'required|array|min:1|max:5',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
         $data = $request->except(['genre_id', 'platform_id', 'images']);
         $genres = $request->genre_id;

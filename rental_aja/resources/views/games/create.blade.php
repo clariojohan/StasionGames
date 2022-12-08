@@ -9,6 +9,15 @@
 </head>
 
 <body>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form method="POST" action="/games" enctype="multipart/form-data">
         @csrf
         <div class="" style="display: flex">
@@ -41,7 +50,7 @@
             <label for="publisher_id">Publisher</label>
             <select name="publisher_id" id="publisher_id">
                 @foreach ($publishers as $publisher)
-                    <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -49,7 +58,7 @@
             <label for="genre_id">Genre</label>
             <select multiple name="genre_id[]" id="genre_id">
                 @foreach ($genres as $genre)
-                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                <option value="{{ $genre->id }}">{{ $genre->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -57,7 +66,7 @@
             <label for="platform_id">Platform</label>
             <select multiple name="platform_id[]" id="platform_id">
                 @foreach ($platforms as $platform)
-                    <option value="{{ $platform->id }}">{{ $platform->name }}</option>
+                <option value="{{ $platform->id }}">{{ $platform->name }}</option>
                 @endforeach
             </select>
         </div>

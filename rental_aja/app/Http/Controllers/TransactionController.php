@@ -61,7 +61,11 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $request->validate([
+            'address' => 'required|string|max:255|regex:/^[a-zA-Z0-9\s,]+$/',
+            'delivery' => 'required|string|max:64|in:JNE,JNT,SiCepat',
+        ]);
+
         $ids = $request->item_id;
         $cartItems = CartItem::find($ids);
 
@@ -143,8 +147,13 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // change transaction status from unpaid to paid when the transaction is paid
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'payment_type' => 'required|string|max:64|in:Bank,E-Money',
+        ]);
+
         $transaction = Transaction::find($id);
 
         $payment = Payment::create([
