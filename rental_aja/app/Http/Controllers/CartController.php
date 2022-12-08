@@ -41,10 +41,18 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $user_id = auth()->user()->id;
+
+        $request->validate([
+            'quantity' => 'required|integer|between:1,10',
+            'type' => 'required|string|in:Digital,Physical',
+            'game_id' => 'required|integer|exists:games,id',
+        ]);
+
         $cart = Cart::where('user_id', $user_id)->first();
         if (!$cart) {
             return Redirect::back()->withErrors('Cart not found');
         }
+
         CartItem::create([
             'quantity' => $request->quantity,
             'type' => $request->type,
@@ -94,8 +102,17 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ids)
     {
-        //
+        if (!auth()->user()) {
+            return abort(403);
+        }
+
+        foreach ($ids as $key => $id) {
+            $cart_item = CartItem::find($id);
+            $cart_item->delete();
+        }
+
+        return redirect('/carts');
     }
 }

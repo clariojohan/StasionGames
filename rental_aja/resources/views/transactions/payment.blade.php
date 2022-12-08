@@ -10,16 +10,18 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('css/style.css')}}" />
-    <title>Account - StasionGames</title>
+    <title>Payment - StasionGames</title>
 
 </head>
 
 <body>
+
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png" alt=""
-                        style="width: 7.5em; border-radius: 0.5em" /></a>
+                <a class="navbar-brand" href="/"><img
+                        src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png"
+                        alt="" style="width: 7.5em; border-radius: 0.5em" /></a>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -54,94 +56,57 @@
                 </div>
             </div>
         </nav>
-        <div class="container mt-5 pt-5">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <img src="{{asset('storage/'.$avatar)}}" alt="avatar" class="rounded-circle img-fluid"
-                                style="width: 150px" />
-                            {{-- form input avatar --}}
-                            <form action="{{  route('edit-avatar') }}" method="POST" enctype="multipart/form-data"
-                                style="">
-                                @csrf @method('patch')
-                                <input type="file" name="avatar" id="avatar">
-                                <input type="submit" value="Upload">
-                            </form>
-                            <h5 class="my-3">{{$name}}</h5>
-                            <div class="d-flex justify-content-center mb-2"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{$name}}</p>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Email</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{$email}}</p>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{$phone}}</p>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{$address}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <p class="mb-4">
-                                <span class="text-primary font-italic me-1">Achievement</span> [ Status Report ]
+        <div>
+            <ul class="card mt-5 p-5 list-group">
+                <h3 class="text-center mb-4">Payment</h3>
+                @foreach ($transaction->items as $item)
+                <li class="list-group-item">
+                    <div class="w-100 d-flex flex-row align-items-center my-2 gap-3">
+                        <img src="{{asset('storage/'.$item->game->gameImages->first()->path)}}" class="img-thumbnail"
+                            alt="" width="100px" />
+                        <div class="container d-flex flex-column gap-2">
+                            <p class="card-subtitle text-muted">Title: {{$item->game->title}}</p>
+                            <p class="card-subtitle text-muted">Type: {{$item->type}} Edition</p>
+                            <p class="card-subtitle text-muted">Price: ${{$item->game->price}}</p>
+                            <p class="card-subtitle text-muted">Quantity: {{$item->quantity}}</p>
+                            <p class="card-subtitle text-muted">Total Price: ${{$item->game->price * $item->quantity}}
                             </p>
-                            <p class="mb-1" style="font-size: 0.77rem">Most Active</p>
-                            <div class="progress rounded" style="height: 5px">
-                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <p class="mt-4 mb-1" style="font-size: 0.77rem">Duration Play Time</p>
-                            <div class="progress rounded" style="height: 5px">
-                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <p class="mt-4 mb-1" style="font-size: 0.77rem">Most Expensive Bought Game</p>
-                            <div class="progress rounded" style="height: 5px">
-                                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <p class="mt-4 mb-1" style="font-size: 0.77rem">Current Total Games</p>
-                            <div class="progress rounded" style="height: 5px">
-                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </li>
+                @endforeach
+                <li class="list-group-item py-3">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    <p class="card-subtitle">Transaction ID: {{ $transaction->id }}</p>
+                    @if ($transaction->status === 'paid')
+                    <p class="card-subtitle">Invoice: {{$transaction->payment->invoice}}</p>
+                    @endif
+                    <p class="card-subtitle">Address: {{ $transaction->address}}</p>
+                    <p class="card-subtitle">Delivery: {{ $transaction->delivery }}</p>
+                    <p class="card-subtitle">Payment Status: {{ $transaction->status }}</p>
+                    <p class="card-subtitle">Total Cart: ${{ $transaction->total_price }}</p>
+                    @if ($transaction->status === 'unpaid')
+                    <form action="{{ route('transactions.update', $transaction->id) }}" method="POST" class="pt-3">
+                        @csrf
+                        @method('PUT')
+                        <label for="" class="form-label">Payment Type</label>
+                        <select class="form-select" name="payment_type" aria-label="Default select example">
+                            <option value="Bank">Bank</option>
+                            <option value="E-Money">E-Money</option>
+                        </select>
+                        <button class="btn btn-primary w-100 mt-3" type="submit">Pay</button>
+                    </form>
+                    @endif
+                </li>
+            </ul>
         </div>
     </section>
 

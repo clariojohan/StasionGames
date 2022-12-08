@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->date('release_date');
-            $table->string('description');
+            $table->string('description', 4096);
             $table->enum('rating', ['E', 'E10', 'T', 'M', 'A']);
             $table->double('price');
             $table->foreignId('publisher_id')->constrained('publishers');

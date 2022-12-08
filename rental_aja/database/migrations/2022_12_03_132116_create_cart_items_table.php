@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->enum('type', ['physical', 'digital']);
+            $table->enum('type', ['Physical', 'Digital']);
             $table->foreignId('cart_id')->constrained('carts');
             $table->foreignId('game_id')->constrained('games');
             $table->timestamps();
