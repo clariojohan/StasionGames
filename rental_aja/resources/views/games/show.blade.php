@@ -139,7 +139,7 @@
                                 <!-- <label class="btn btn-outline-light" for="option2">Digital</label> -->
                             </div> --}}
 
-
+                            
                             <div class="input-group w-50 justify-content-end align-items-center mb-2 ms-4">
                                 <input type="number" placeholder="quantity" name="quantity"
                                     class="quantity-field form-control input-number" value="" min="1" max="10" style="text-align: center;">
