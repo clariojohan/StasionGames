@@ -7,6 +7,10 @@
     font-family: "Sulphur Point", sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
+
 .breadcrumb-item a {
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -17,6 +21,31 @@
     background-color: black;
     padding: 5px;
     color: rgb(255, 255, 255);
+}
+/* =================================================== */
+/* =================================================== */
+
+.avatar-main {
+    position: relative;
+}
+
+.photo-upload {
+    transition: 0.6 ease;
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.avatar-main:hover .avatar-photo {
+    opacity: 0.2;
+}
+
+.avatar-main:hover .photo-upload {
+    opacity: 1;
 }
 
 /* =================================================== */
