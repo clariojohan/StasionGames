@@ -13,6 +13,7 @@
 </head>
 
 <body class="bg-dark">
+<<<<<<< HEAD
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid ms-3">
@@ -92,6 +93,92 @@
     </ul>
 
     <footer id="footer">
+=======
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img
+                    src="https://cdn.discordapp.com/attachments/1027576200786358364/1049697278476173412/qlogo2.png"
+                    alt="" style="width: 7.5em; border-radius: 0.5em" /></a>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/carts"><i
+                                class="fa-solid fa-cart-shopping"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/account"><i
+                                class="fa-solid fa-user"></i></a>
+                    </li>
+                    @if (Auth::check())
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </form>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/register">Register</a>
+                    </li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- List Product Cart-->
+    <ul class="card mt-5 p-5 list-group">
+        @foreach ($transactions as $transaction)
+        <li class="list-group-item p-3 d-flex">
+            <div class="container d-flex flex-column gap-2">
+                <h5 class="card-subtitle">Transaction Id: {{$transaction->id}}</h5>
+                @if ($transaction->status === 'paid')
+                <p class="card-subtitle text-muted">Invoice: {{$transaction->payment->invoice}}</p>
+                @endif
+                <p class="card-subtitle text-muted">Status: {{$transaction->status}}</p>
+                <p class="card-subtitle text-muted">Game List</p>
+                @foreach ($transaction->items as $item)
+                <p class="card-subtitle text-muted">- {{$item->game->title}}</p>
+                @endforeach
+                <p class="card-subtitle text-muted">Total Price: ${{$transaction->total_price}}</p>
+            </div>
+            <a class="me-md-2 w-25 h-25" href="/transactions/{{$transaction->id}}">
+                <button class="btn btn-primary" type="button">
+                    Details
+                </button>
+            </a>
+        </li>
+        @endforeach
+    </ul>
+
+    <!-- Footer-->
+    <footer id="footer">
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Our Game News</h4>
+                        <p>"Halo: Infinity" has published. Download now!</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post">
+                            <input type="email" name="email" />
+                            <input type="submit" value="Ask us!" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -121,6 +208,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-links">
+<<<<<<< HEAD
                         <h4>Our Platform Game</h4>
                         <ul>
                             <li>
@@ -138,14 +226,42 @@
                             <li>
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="#">Personal Computer</a>
+=======
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Reverse Engineering</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Web Exploitation</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Digital Forensic</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Binary Exploitation</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Playstation 5 Hacking</a>
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h4>Contact Us</h4>
                         <p>
+<<<<<<< HEAD
                             Kemanggisan Raya <br />
                             Jakarta, JKT 809413 <br />
+=======
+                            Kemanggisan <br />
+                            Bekasi, JKT 809413 <br />
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                             Indonesia
                             <br />
                             <br />
@@ -179,7 +295,11 @@
         </div>
         <div class="container">
             <div class="copyright">
+<<<<<<< HEAD
                 &copy; Copyright 2022
+=======
+                &copy; Copyright
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                 <strong> <span>StasionGames </span> </strong>. All Rights Reserved
             </div>
             <div class="credits">

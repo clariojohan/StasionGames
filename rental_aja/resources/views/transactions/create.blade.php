@@ -18,6 +18,7 @@
 </head>
 
 <body class="d-flex flex-column bg-dark">
+<<<<<<< HEAD
     <section style="background-color: rgb(66, 66, 66)">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid ms-3">
@@ -47,14 +48,53 @@
                             @csrf
                             <button type="submit" class="btn btn-danger px-2">
                                 <i class="fa-solid fa-right-from-bracket px-2"></i>
+=======
+    <!-- Navigation-->
+    <section style="background-color: rgb(66, 66, 66)">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img src="{{asset('images/logo.jpg')}}" alt=""
+                        style="width: 7.5em; border-radius: 0.5em" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/carts"><i
+                                    class="fa-solid fa-cart-shopping"></i></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/account"><i
+                                    class="fa-solid fa-user"></i></a>
+                        </li>
+                        @if (Auth::check())
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                             </button>
                         </form>
                         @else
                         <li class="nav-item">
+<<<<<<< HEAD
                             <a class="nav-link px-2" aria-current="page" href="/login">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-2" aria-current="page" href="/register">Register</a>
+=======
+                            <a class="nav-link" aria-current="page" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/register">Register</a>
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                         </li>
                         @endif
                     </ul>
@@ -79,8 +119,12 @@
                             <p class="card-subtitle text-muted">Type: {{$item->type}}</p>
                             <p class="card-subtitle text-muted">Price: ${{$item->game->price}}</p>
                             <p class="card-subtitle text-muted">Quantity: {{$item->quantity}}</p>
+<<<<<<< HEAD
                             <p class="card-subtitle text-muted">Total Price: ${{$item->game->price *
                                 $item->quantity}}
+=======
+                            <p class="card-subtitle text-muted">Total Price: ${{$item->game->price * $item->quantity}}
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                             </p>
                         </div>
                     </div>
@@ -116,8 +160,29 @@
         </ul>
     </div>
 
+<<<<<<< HEAD
 
     <footer id="footer">
+=======
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Our Game News</h4>
+                        <p>"Halo: Infinity" has published. Download now!</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post">
+                            <input type="email" name="email" />
+                            <input type="submit" value="Ask us!" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -147,6 +212,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-links">
+<<<<<<< HEAD
                         <h4>Our Platform Game</h4>
                         <ul>
                             <li>
@@ -164,24 +230,57 @@
                             <li>
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="#">Personal Computer</a>
+=======
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Reverse Engineering</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Web Exploitation</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Digital Forensic</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Binary Exploitation</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Playstation 5 Hacking</a>
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h4>Contact Us</h4>
                         <p>
+<<<<<<< HEAD
                             Kemanggisan Raya <br />
                             Jakarta, JKT 809413 <br />
+=======
+                            Kemanggisan <br />
+                            Bekasi, JKT 809413 <br />
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                             Indonesia
                             <br />
                             <br />
                             <strong>Phone: </strong> +62 812 9021 2212
                             <br />
+<<<<<<< HEAD
                             <strong>Email: </strong> stasion@games.com
+=======
+                            <strong>Email: </strong> rental@aja.com
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                             <br />
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-info">
+<<<<<<< HEAD
                         <h3>About StasionGames</h3>
                         <h7>We're giving you an easy service to be used to play games more lightly and more
                             suitable with your passion.</h7>
@@ -196,6 +295,22 @@
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                             <a href="#" class="linkedin">
+=======
+                        <h3>About RentalAja</h3>
+                        <h7>We're giving you an easy service to be used to play games more lightly and more
+                            suitable with your passion.</h7>
+                        <div class="social-links mt-3">
+                            <a href="https://www.twitter.com/" class="twitter">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="https://www.facebook.com/" class="facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" class="instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/" class="linkedin">
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
                                 <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </div>
@@ -205,12 +320,21 @@
         </div>
         <div class="container">
             <div class="copyright">
+<<<<<<< HEAD
                 &copy; Copyright 2022
                 <strong> <span>StasionGames </span> </strong>. All Rights Reserved
             </div>
             <div class="credits">
                 Designed by
                 <a href="/dashboard">StasionGames</a>
+=======
+                &copy; Copyright
+                <strong> <span>RentalAja </span> </strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by
+                <a href="/dashboard">RentalAja</a>
+>>>>>>> 8cc302b615af3b31eb7140be0aa3ef315455b6b9
             </div>
         </div>
     </footer>

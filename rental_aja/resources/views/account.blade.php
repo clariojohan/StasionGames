@@ -16,16 +16,15 @@
 
 <body>
     <section style="background-color: rgb(66, 66, 66)">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mb-5">
             <div class="container-fluid ms-3">
-                <a class="navbar-brand" href="/"><img
-                        src="{{url('/images/logo.png')}}"
-                        alt="" style="width: 7.5em; border-radius: 0.5em" /></a>
+                <a class="navbar-brand" href="/"><img src="{{url('/images/logo.png')}}" alt=""
+                        style="width: 7.5em; border-radius: 0.5em" /></a>
             </div>
             <div class="d-flex justify-content-end me-3">
-            <div class="collapse navbar-collapse" id="navbarScroll">
+                <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
-                    
+
                         @if (Auth::check())
                         <li class="nav-item">
                             <a class="nav-link px-2" aria-current="page" href="/carts"><i
@@ -33,7 +32,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link px-2" aria-current="page" href="/transactions"><i 
+                            <a class="nav-link px-2" aria-current="page" href="/transactions"><i
                                     class="fas fa-receipt px-2"></i></a>
                         </li>
 
@@ -65,25 +64,19 @@
                     <div class="card mb-4">
                         <div class="card-body text-center">
                             <div class="avatar-main">
-                                <img src="{{asset('storage/'.$avatar)}}" alt="avatar" class="rounded-circle img-fluid avatar-photo" />
+                                <img src="{{asset('storage/'.$avatar)}}" alt="avatar"
+                                    class="rounded-circle img-fluid avatar-photo" />
                                 <div class="photo-upload">
-                                    <form action="{{  route('edit-avatar') }}" method="POST" enctype="multipart/form-data"
-                                    style="">
+                                    <form action="{{  route('edit-avatar') }}" method="POST"
+                                        enctype="multipart/form-data" style="">
                                         @csrf @method('patch')
-                                        <input type="file" class="form-control" id="customFile avatar" name="avatar" style="width: 108px;">
-                                        <!-- <input type="file" title="" name="avatar" id="avatar"> -->
+                                        <input type="file" class="form-control" id="customFile avatar" name="avatar"
+                                            style="width: 108px;">
                                         <input type="submit" value="Upload">
                                     </form>
                                 </div>
                             </div>
 
-                            {{-- form input avatar --}}
-                            <!-- <form action="{{  route('edit-avatar') }}" method="POST" enctype="multipart/form-data"
-                                style="">
-                                @csrf @method('patch')
-                                <input type="file" name="avatar" id="avatar">
-                                <input type="submit" value="Upload">
-                            </form> -->
                             <h5 class="my-3">{{$name}}</h5>
                             <div class="d-flex justify-content-center mb-2"></div>
                         </div>
@@ -162,102 +155,102 @@
     </section>
 
     <footer id="footer">
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 footer-links">
-                            <h4>Useful Links</h4>
-                            <ul>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="/">Home</a>
-                                </li>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="/about-us">About us</a>
-                                </li>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="#">Services</a>
-                                </li>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="#">Terms of service</a>
-                                </li>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="#">Privacy policy</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 footer-links">
-                            <h4>Our Platform Game</h4>
-                            <ul>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="#">Playstation</a>
-                                </li>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="#">Nintendo Switch</a>
-                                </li>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="#">Xbox</a>
-                                </li>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="#">Personal Computer</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 footer-contact">
-                            <h4>Contact Us</h4>
-                            <p>
-                                Kemanggisan Raya <br />
-                                Jakarta, JKT 809413 <br />
-                                Indonesia
-                                <br />
-                                <br />
-                                <strong>Phone: </strong> +62 812 9021 2212
-                                <br />
-                                <strong>Email: </strong> stasion@games.com
-                                <br />
-                            </p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 footer-info">
-                            <h3>About StasionGames</h3>
-                            <h7>We're giving you an easy service to be used to play games more lightly and more
-                                suitable with your passion.</h7>
-                            <div class="social-links mt-3">
-                                <a href="#" class="twitter">
-                                    <i class="fa-brands fa-twitter"></i>
-                                </a>
-                                <a href="#" class="facebook">
-                                    <i class="fa-brands fa-facebook"></i>
-                                </a>
-                                <a href="#" class="instagram">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <a href="#" class="linkedin">
-                                    <i class="fa-brands fa-linkedin"></i>
-                                </a>
-                            </div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="/about-us">About us</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Services</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Terms of service</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Privacy policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Platform Game</h4>
+                        <ul>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Playstation</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Nintendo Switch</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Xbox</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Personal Computer</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contact Us</h4>
+                        <p>
+                            Kemanggisan Raya <br />
+                            Jakarta, JKT 809413 <br />
+                            Indonesia
+                            <br />
+                            <br />
+                            <strong>Phone: </strong> +62 812 9021 2212
+                            <br />
+                            <strong>Email: </strong> stasion@games.com
+                            <br />
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>About StasionGames</h3>
+                        <h7>We're giving you an easy service to be used to play games more lightly and more
+                            suitable with your passion.</h7>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="#" class="facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="#" class="instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="#" class="linkedin">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="copyright">
-                    &copy; Copyright 2022
-                    <strong> <span>StasionGames </span> </strong>. All Rights Reserved
-                </div>
-                <div class="credits">
-                    Designed by
-                    <a href="/dashboard">StasionGames</a>
-                </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright 2022
+                <strong> <span>StasionGames </span> </strong>. All Rights Reserved
             </div>
-        </footer>
+            <div class="credits">
+                Designed by
+                <a href="/dashboard">StasionGames</a>
+            </div>
+        </div>
+    </footer>
 </body>
 <script src="https://kit.fontawesome.com/1708e63c1c.js" crossorigin="anonymous"></script>
 
