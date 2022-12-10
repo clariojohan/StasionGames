@@ -2,7 +2,7 @@
 
 ## Description
 
-A Simple Game Rental Web Apllication using Laravel Framework and MySQL.
+A Simple Game Store Web Apllication using Laravel Framework and MySQL Database.
 
 ## Getting Started
 
@@ -11,6 +11,7 @@ A Simple Game Rental Web Apllication using Laravel Framework and MySQL.
 3. Compile the assets using "npm i && npm run dev"
 4. Copy the .env.example file to .env and fill the database credentials
 5. Fire up XAMPP and start the Apache and MySQL services
+6. Link storage for using "php artisan storage:link"
 6. Create a database and migrate the tables using "php artisan migrate --seed"
 7. Run the application using "php artisan serve"
 8. Open the application on your browser using the URL provided by the command above
