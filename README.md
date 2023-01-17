@@ -7,14 +7,16 @@ A Simple Game Store Web Apllication using Laravel Framework and MySQL Database.
 ## Getting Started
 
 1. Clone the repository
-2. Install the dependencies using "composer install"
-3. Compile the assets using "npm i && npm run dev"
-4. Copy the .env.example file to .env and fill the database credentials
-5. Fire up XAMPP and start the Apache and MySQL services
-6. Link storage for using "php artisan storage:link"
-6. Create a database and migrate the tables using "php artisan migrate --seed"
-7. Run the application using "php artisan serve"
-8. Open the application on your browser using the URL provided by the command above
+2. Change the branch to branch-clario using "git checkout branch-clario"
+3. Change directory to /rental_aja using "cd /rental_aja"
+4. Rename the .env.example file to .env
+5. Install the dependencies using "composer install"
+6. Install and compile the assets using "npm i"
+7. Fire up XAMPP and start the Apache and MySQL services
+8. Link storage for using "php artisan storage:link"
+9. Create a database and migrate the tables using "php artisan migrate --seed"
+10. Run the application using "php artisan serve" and "npm run dev"
+11. Open the application on your browser using the URL provided by the command above
 
 ## Authors
 
